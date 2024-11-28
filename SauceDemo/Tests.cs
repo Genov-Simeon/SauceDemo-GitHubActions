@@ -10,7 +10,9 @@ namespace SauceDemoTests
         [SetUp]
         public void Setup()
         {
-            _driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("--headless");
+            _driver = new ChromeDriver(options);
             _driver.Navigate().GoToUrl("https://www.saucedemo.com/");
         }
 
