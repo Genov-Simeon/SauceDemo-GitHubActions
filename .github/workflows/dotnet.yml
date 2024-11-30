@@ -15,6 +15,15 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
 
+    env:
+      USER_STANDARD: "standard_user"
+      USER_LOCKED_OUT: "locked_out_user"
+      USER_PROBLEM: "problem_user"
+      USER_PERFORMANCE: "performance_glitch_user"
+      USER_ERROR: "error_user"
+      USER_VISUAL: "visual_user"
+      PASSWORD: "secret_sauce"
+
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
