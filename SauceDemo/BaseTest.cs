@@ -17,7 +17,7 @@ namespace SauceDemoTests
         public void Init()
         {
             ChromeOptions options = new ChromeOptions();
-            //options.AddArguments("--headless");
+            options.AddArguments("--headless");
             _driver = new ChromeDriver(options);
 
             CartPage = new CartPage(_driver);
