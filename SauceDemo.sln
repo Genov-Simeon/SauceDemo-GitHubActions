@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SauceDemo.Pages", "SauceDemo.Pages\SauceDemo.Pages.csproj", "{B8FE92BE-1F58-4C54-8E40-31B500C536CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SauceDemo.Customizations", "SauceDemo.Pages\SauceDemo.Customizations.csproj", "{B8FE92BE-1F58-4C54-8E40-31B500C536CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
