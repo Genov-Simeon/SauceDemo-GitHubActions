@@ -15,6 +15,10 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        category: [Login, Checkout, User, Cart]
+
     env:
       USER_STANDARD: "standard_user"
       USER_LOCKED_OUT: "locked_out_user"
@@ -34,8 +38,8 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal --logger "trx"
+    - name: Test ${{ matrix.category }}
+      run: dotnet test --no-build --verbosity normal --logger "trx" --filter TestCategory=${{ matrix.category }}
 
     - name: Test Reporter
       # You may pin to the exact commit or the version.
