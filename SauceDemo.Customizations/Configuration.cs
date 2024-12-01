@@ -16,11 +16,11 @@ namespace SauceDemo.Customizations
                 .Build();
         }
 
-        public static string Get(string key)
+        private static string Get(string key)
         {
             return _config[key];
         }
 
-        public static string BaseUrl => Get("ApplicationSettings:BaseUrl");
+        public static string BaseUrl => Get("BaseUrl");
     }
 }

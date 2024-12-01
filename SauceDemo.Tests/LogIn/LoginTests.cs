@@ -4,6 +4,7 @@ using SauceDemo.Customizations.Pages;
 
 namespace SauceDemoTests
 {
+    [Category("Login")]
     public class LoginTests : BaseTest
     {
         private UserInfo? _user;

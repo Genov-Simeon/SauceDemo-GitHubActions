@@ -2,6 +2,7 @@
 
 namespace SauceDemoTests
 {
+    [Category("User")]
     public class ErrorUserTests : BaseTest
     {
         [SetUp]

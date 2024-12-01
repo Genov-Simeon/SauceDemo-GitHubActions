@@ -1,9 +1,9 @@
-﻿using NUnit.Framework.Interfaces;
-using SauceDemo.Customizations.Factories;
+﻿using SauceDemo.Customizations.Factories;
 using SauceDemo.Customizations.Pages;
 
 namespace SauceDemoTests
 {
+    [Category("Checkout")]
     public class AddItemsToCartTests : BaseTest
     {
         [SetUp]

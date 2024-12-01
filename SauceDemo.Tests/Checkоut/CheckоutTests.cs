@@ -5,7 +5,8 @@ using SauceDemo.Customizations.Pages;
 
 namespace SauceDemoTests
 {
-    public class CheckOutTests : BaseTest
+    [Category("Checkоut")]
+    public class CheckоutTests : BaseTest
     {
         private UserData _userData;
 
@@ -19,7 +20,7 @@ namespace SauceDemoTests
         }
 
         [Test]
-        public void CheckOutSuccessFull_When_AddItemToCart_And_CompletePurchase()
+        public void CheckoutSuccessFull_When_AddItemToCart_And_CompletePurchase()
         {
             var productList = new List<ProductInfo> 
             { 
@@ -32,7 +33,7 @@ namespace SauceDemoTests
         }
 
         [Test]
-        public void CheckOutSuccessFull_When_AddMultipleItemsToCart_And_CompletePurchase()
+        public void CheckoutSuccessFull_When_AddMultipleItemsToCart_And_CompletePurchase()
         {
             var productList = new List<ProductInfo>
             {
@@ -47,7 +48,7 @@ namespace SauceDemoTests
         }
 
         [Test]
-        public void CheckOutCancelled_When_ClickContinueShopping_FromStepOne()
+        public void CheckoutCancelled_When_ClickContinueShopping_FromStepOne()
         {
             InventoryPage.AddItemToCart(ProductInfoFactory.CreateSauceLabsBoltTShirt().Name);
             CartPage.Open();
@@ -59,7 +60,7 @@ namespace SauceDemoTests
         }
 
         [Test]
-        public void ValidationErrorDisplayed_When_CheckOutWithMissingFirstName()
+        public void ValidationErrorDisplayed_When_CheckoutWithMissingFirstName()
         {
             _userData.FirstName = string.Empty;
             
@@ -73,7 +74,7 @@ namespace SauceDemoTests
         }
 
         [Test]
-        public void ValidationErrorDisplayed_When_CheckOutWithMissingLastName()
+        public void ValidationErrorDisplayed_When_CheckoutWithMissingLastName()
         {
             _userData.LastName = string.Empty;
 
@@ -87,7 +88,7 @@ namespace SauceDemoTests
         }
 
         [Test]
-        public void ValidationErrorDisplayed_When_CheckOutWithMissingPostalCode()
+        public void ValidationErrorDisplayed_When_CheckoutWithMissingPostalCode()
         {
             _userData.PostalCode = string.Empty;
 
@@ -148,7 +149,7 @@ namespace SauceDemoTests
         }
 
         [Test]
-        public void CheckOutSuccessful_When_HugeLength_UserData()
+        public void CheckoutSuccessful_When_HugeLength_UserData()
         {
             _userData.FirstName = new string('A', 200);
             _userData.LastName = new string('B', 200);
@@ -164,7 +165,7 @@ namespace SauceDemoTests
         }
 
         [Test]
-        public void CheckOutSuccessful_When_UseSpecialCharacters_InUserData()
+        public void CheckoutSuccessful_When_UseSpecialCharacters_InUserData()
         {
             _userData.FirstName = "O'Niel-Smith";
             _userData.LastName = "Müller-König";
