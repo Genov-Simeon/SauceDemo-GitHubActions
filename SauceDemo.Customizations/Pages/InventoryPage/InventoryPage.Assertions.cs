@@ -44,12 +44,13 @@ namespace SauceDemo.Customizations.Pages
 
         public void AssertLoadedOnTime()
         {
+            const int LoadingTime = 5;
             var inventoryStartTime = DateTime.Now;
             WaitForInventoryToLoad();
             var inventoryEndTime = DateTime.Now;
             var inventoryLoadDuration = inventoryEndTime - inventoryStartTime;
 
-            Assert.LessOrEqual(inventoryLoadDuration.TotalSeconds, 5, $"Inventory page load took {inventoryLoadDuration.TotalSeconds} seconds, which exceeds the acceptable limit.");
+            Assert.LessOrEqual(inventoryLoadDuration.TotalSeconds, LoadingTime, $"Inventory page load took {inventoryLoadDuration.TotalSeconds} seconds, which exceeds the acceptable limit.");
         }
 
         public void AssertCartButtonsAreDisplayedAndClickable()

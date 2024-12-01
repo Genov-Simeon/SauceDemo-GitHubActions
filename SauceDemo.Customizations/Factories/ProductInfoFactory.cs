@@ -12,7 +12,7 @@ namespace SauceDemo.Customizations.Factories
                 Description = "A sleek, streamlined backpack with Sauce Labs branding.",
                 Price = 29.99m,
                 ButtonText = "Add to Cart",
-                ImageUrl = "https://www.saucedemo.com/static/media/sauce-backpack-1200x1500.34e7aa42.jpg"
+                ImageUrl = $"{Configuration.BaseUrl}/static/media/sauce-backpack-1200x1500.34e7aa42.jpg"
             };
         }
 
@@ -24,7 +24,7 @@ namespace SauceDemo.Customizations.Factories
                 Description = "A red light for your bike to ensure visibility at night.",
                 Price = 9.99m,
                 ButtonText = "Add to Cart",
-                ImageUrl = "https://www.saucedemo.com/static/media/bike-light-1200x1500.a0c9caae.jpg"
+                ImageUrl = $"{Configuration.BaseUrl}/static/media/bike-light-1200x1500.a0c9caae.jpg"
             };
         }
 
@@ -36,7 +36,7 @@ namespace SauceDemo.Customizations.Factories
                 Description = "Get your Sauce Labs swag on with this bold T-shirt.",
                 Price = 15.99m,
                 ButtonText = "Add to Cart",
-                ImageUrl = "https://www.saucedemo.com/static/media/bolt-shirt-1200x1500.c0dae290.jpg"
+                ImageUrl = $"{Configuration.BaseUrl}/static/media/bolt-shirt-1200x1500.c0dae290.jpg"
             };
         }
 
@@ -48,7 +48,7 @@ namespace SauceDemo.Customizations.Factories
                 Description = "A fleece jacket that lets you show off your Sauce Labs pride.",
                 Price = 49.99m,
                 ButtonText = "Add to Cart",
-                ImageUrl = "https://www.saucedemo.com/static/media/sauce-pullover-1200x1500.439fc934.jpg"
+                ImageUrl = $"{Configuration.BaseUrl}/static/media/sauce-pullover-1200x1500.439fc934.jpg"
             };
         }
 
@@ -60,7 +60,7 @@ namespace SauceDemo.Customizations.Factories
                 Description = "Rib snap infant onesie for the Sauce Labs baby in your life.",
                 Price = 7.99m,
                 ButtonText = "Add to Cart",
-                ImageUrl = "https://www.saucedemo.com/static/media/red-onesie-1200x1500.2ec615b2.jpg"
+                ImageUrl = $"{Configuration.BaseUrl}/static/media/red-onesie-1200x1500.2ec615b2.jpg"
             };
         }
 
@@ -72,7 +72,7 @@ namespace SauceDemo.Customizations.Factories
                 Description = "This classic Sauce Labs T-shirt is perfect for testing enthusiasts.",
                 Price = 15.99m,
                 ButtonText = "Add to Cart",
-                ImageUrl = "https://www.saucedemo.com/static/media/red-tatt-1200x1500.30dadef4.jpg"
+                ImageUrl = $"{Configuration.BaseUrl}/static/media/red-tatt-1200x1500.30dadef4.jpg"
             };
         }
     }

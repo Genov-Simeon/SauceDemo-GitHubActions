@@ -11,14 +11,6 @@ namespace SauceDemo.Customizations
         private readonly CheckoutStepOnePage _checkoutStepOnePage;
         private readonly CheckoutStepTwoPage _checkoutStepTwoPage;
 
-        public PurchaseFacade(IWebDriver driver)
-        {
-            _inventoryPage = new InventoryPage(driver);
-            _cartPage = new CartPage(driver);
-            _checkoutStepOnePage = new CheckoutStepOnePage(driver);
-            _checkoutStepTwoPage = new CheckoutStepTwoPage(driver);
-        }
-
         public PurchaseFacade(InventoryPage inventoryPage, CartPage cartPage, CheckoutStepOnePage checkoutStepOnePage, CheckoutStepTwoPage checkoutStepTwoPage)
         {
             _inventoryPage = inventoryPage;
@@ -37,7 +29,7 @@ namespace SauceDemo.Customizations
             _cartPage.Open();
             _cartPage.CheckoutButton.Click();
 
-            _checkoutStepOnePage.FillInformationFromFactory();
+            _checkoutStepOnePage.FillAllFields();
             _checkoutStepOnePage.ContinueButton.Click();
 
             _checkoutStepTwoPage.FinishButton.Click();

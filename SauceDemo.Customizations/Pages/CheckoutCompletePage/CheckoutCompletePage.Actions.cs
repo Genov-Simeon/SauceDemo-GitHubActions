@@ -8,7 +8,7 @@ namespace SauceDemo.Customizations.Pages
         {
         }
 
-        public override void Open(string relativePath = "checkout-complete.html")
+        public override void Open(string relativePath = "/checkout-complete.html")
         {
             base.Open(relativePath);
         }

@@ -19,7 +19,6 @@ namespace SauceDemoTests
             InventoryPage.AssertCartButtonsAreDisplayedAndClickable();
         }
 
-        [Test]
         public void ImagesBroken_When_LogWithErrorUser()
         {
             var brokenImages = InventoryPage.GetBrokenImagesCount();

@@ -9,7 +9,7 @@ namespace SauceDemo.Customizations.Pages
         {
         }
 
-        public override void Open(string relativePath = "inventory.html")
+        public override void Open(string relativePath = "/inventory.html")
         {
             base.Open(relativePath);
         }

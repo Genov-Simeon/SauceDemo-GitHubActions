@@ -25,11 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="NUnit.Framework" />
+    <ProjectReference Include="..\SauceDemo.Customizations\SauceDemo.Customizations.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SauceDemo.Pages\SauceDemo.Customizations.csproj" />
+    <Using Include="NUnit.Framework" />
   </ItemGroup>
 
   <ItemGroup>

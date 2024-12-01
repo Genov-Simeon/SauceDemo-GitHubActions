@@ -10,7 +10,7 @@ namespace SauceDemo.Customizations.Pages
         {
         }
 
-        public override void Open(string relativePath = "checkout-step-one.html")
+        public override void Open(string relativePath = "/checkout-step-one.html")
         {
             base.Open(relativePath);
         }
@@ -20,17 +20,17 @@ namespace SauceDemo.Customizations.Pages
             return ErrorMessage.Text;
         }
 
-        public void FillInformation(string firstName, string lastName, string postalCode)
+        public void FillAllFields(UserData userData)
         {
-            FirstNameField.SendKeys(firstName);
-            LastNameField.SendKeys(lastName);
-            PostalCodeField.SendKeys(postalCode);
+            FirstNameField.SendKeys(userData.FirstName);
+            LastNameField.SendKeys(userData.LastName);
+            PostalCodeField.SendKeys(userData.PostalCode);
         }
 
-        public void FillInformationFromFactory()
+        public void FillAllFields()
         {
             UserData userData = UserDataFactory.Generate();
-            FillInformation(userData.FirstName, userData.LastName, userData.PostalCode);
+            FillAllFields(userData);
         }
     }
 }

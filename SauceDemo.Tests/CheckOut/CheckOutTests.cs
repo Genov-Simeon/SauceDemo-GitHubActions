@@ -7,16 +7,19 @@ namespace SauceDemoTests
 {
     public class CheckOutTests : BaseTest
     {
+        private UserData _userData;
+
         [SetUp]
         public void Setup()
         {
+            _userData = UserDataFactory.Generate();
             LoginPage.Open();
             var user = UserInfoFactory.BuildUserCredentials("USER_STANDARD", "PASSWORD");
             LoginPage.Login(user);
         }
 
         [Test]
-        public void CheckOutSuccessFull_When_AddItemToCart_And_FillCorrectInfo()
+        public void CheckOutSuccessFull_When_AddItemToCart_And_CompletePurchase()
         {
             var productList = new List<ProductInfo> 
             { 
@@ -29,7 +32,7 @@ namespace SauceDemoTests
         }
 
         [Test]
-        public void CheckOutSuccessFull_When_AddMultipleItemsToCart_And_FillCorrectInfo()
+        public void CheckOutSuccessFull_When_AddMultipleItemsToCart_And_CompletePurchase()
         {
             var productList = new List<ProductInfo>
             {
@@ -44,14 +47,45 @@ namespace SauceDemoTests
         }
 
         [Test]
-        public void ValidationErrorDisplayed_When_CheckOutWithMissingData()
+        public void ValidationErrorDisplayed_When_CheckOutWithMissingFirstName()
         {
+            _userData.FirstName = string.Empty;
+            
             InventoryPage.AddItemToCart(ProductInfoFactory.CreateSauceLabsBoltTShirt().Name);
             CartPage.Open();
             CartPage.CheckoutButton.Click();
+            CheckoutStepOnePage.FillAllFields(_userData);
             CheckoutStepOnePage.ContinueButton.Click();
 
             Assert.That(CheckoutStepOnePage.GetErrorMessage(), Is.EqualTo("Error: First Name is required"));
+        }
+
+        [Test]
+        public void ValidationErrorDisplayed_When_CheckOutWithMissingLastName()
+        {
+            _userData.LastName = string.Empty;
+
+            InventoryPage.AddItemToCart(ProductInfoFactory.CreateSauceLabsBoltTShirt().Name);
+            CartPage.Open();
+            CartPage.CheckoutButton.Click();
+            CheckoutStepOnePage.FillAllFields(_userData);
+            CheckoutStepOnePage.ContinueButton.Click();
+
+            Assert.That(CheckoutStepOnePage.GetErrorMessage(), Is.EqualTo("Error: Last Name is required"));
+        }
+
+        [Test]
+        public void ValidationErrorDisplayed_When_CheckOutWithMissingPostalCode()
+        {
+            _userData.PostalCode = string.Empty;
+
+            InventoryPage.AddItemToCart(ProductInfoFactory.CreateSauceLabsBoltTShirt().Name);
+            CartPage.Open();
+            CartPage.CheckoutButton.Click();
+            CheckoutStepOnePage.FillAllFields(_userData);
+            CheckoutStepOnePage.ContinueButton.Click();
+
+            Assert.That(CheckoutStepOnePage.GetErrorMessage(), Is.EqualTo("Error: Postal Code is required"));
         }
 
         [Test]
@@ -70,7 +104,7 @@ namespace SauceDemoTests
             }
             CartPage.Open();
             CartPage.CheckoutButton.Click();
-            CheckoutStepOnePage.FillInformationFromFactory();
+            CheckoutStepOnePage.FillAllFields();
             CheckoutStepOnePage.ContinueButton.Click();
             var getSubtotal = CheckoutStepTwoPage.GetSubtotal();
             CheckoutStepTwoPage.FinishButton.Click();

@@ -33,12 +33,13 @@ namespace SauceDemoTests
         public void Init()
         {
             ChromeOptions options = new ChromeOptions();
-            //options.AddArguments("--headless");
+            options.AddArguments("--headless");
             _driver = new ChromeDriver(options);
 
             Container = TestInitialize.ConfigureContainer(_driver);
 
             PurchaseFacade = Container.Resolve<PurchaseFacade>();
+
             CartPage = Container.Resolve<CartPage>();
             CheckoutStepOnePage = Container.Resolve<CheckoutStepOnePage>();
             CheckoutStepTwoPage = Container.Resolve<CheckoutStepTwoPage>();

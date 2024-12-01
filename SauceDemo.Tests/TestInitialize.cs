@@ -15,6 +15,7 @@ namespace SauceDemoTests
 
             Container.RegisterInstance(driver);
 
+            Container.RegisterType<PurchaseFacade>();
             Container.RegisterType<CartPage>();
             Container.RegisterType<CheckoutStepOnePage>();
             Container.RegisterType<CheckoutStepTwoPage>();
@@ -22,7 +23,6 @@ namespace SauceDemoTests
             Container.RegisterType<InventoryPage>();
             Container.RegisterType<InventoryItemPage>();
             Container.RegisterType<LoginPage>();
-            Container.RegisterType<PurchaseFacade>();
 
             return Container;
         }
