@@ -26,5 +26,19 @@ namespace SauceDemo.Customizations.Pages
                 return 0;
             }
         }
+
+        public decimal GetItemTotal()
+        {
+            var priceElements = Driver.FindElements(By.ClassName("inventory_item_price"));
+
+            decimal total = 0;
+            foreach (var priceElement in priceElements)
+            {
+                var priceText = priceElement.Text.Replace("$", "").Trim();
+                total += decimal.Parse(priceText);
+            }
+
+            return total;
+        }
     }
 }

@@ -14,5 +14,7 @@ namespace SauceDemo.Customizations.Pages
 
         public IWebElement ErrorMessage => Driver.FindElement(By.ClassName("error-message-container"));
 
+        public IWebElement ContinueShoppingButton => Driver.FindElement(By.Id("continue-shopping"));
+
     }
 }

@@ -122,5 +122,17 @@ namespace SauceDemo.Customizations.Pages
             var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
             wait.Until(driver => InventoryContainer.Displayed);
         }
+
+        public bool IsDisplayed()
+        {
+            try
+            {
+                return InventoryContainer.Displayed;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
     }
 }

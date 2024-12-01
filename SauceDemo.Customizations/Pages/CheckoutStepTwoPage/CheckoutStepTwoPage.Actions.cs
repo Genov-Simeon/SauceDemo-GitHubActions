@@ -21,5 +21,23 @@ namespace SauceDemo.Customizations.Pages
 
             return decimal.Parse(numericPart);
         }
+
+        public bool IsDisplayed()
+        {
+            try
+            {
+                return CheckoutSummaryTitle.Displayed;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
+        }
+
+        public string GetItemDescription(string productName)
+        {
+            var inventoryItem = Driver.FindElement(By.XPath($"//div[@class='inventory_item_name' and text()='{productName}']/../../div[@class='inventory_item_desc']"));
+            return inventoryItem.Text;
+        }
     }
 }
