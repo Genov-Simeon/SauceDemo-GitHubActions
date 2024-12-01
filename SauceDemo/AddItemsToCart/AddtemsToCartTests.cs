@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework.Interfaces;
 using SauceDemo.Customizations.Factories;
 using SauceDemo.Customizations.Pages;
-using SauceDemo.Pages.Constants;
 
 namespace SauceDemoTests
 {
@@ -11,22 +10,26 @@ namespace SauceDemoTests
         public void Setup()
         {
             LoginPage.Open();
-            var user = UserFactory.BuildUserCredentials("USER_STANDARD", "PASSWORD");
+            var user = UserInfoFactory.BuildUserCredentials("USER_STANDARD", "PASSWORD");
             LoginPage.Login(user);
         }
 
         [Test]
         public void SingleItemAddedToCart_When_AddSingleItem()
         {
-            InventoryPage.AddItemToCart(SauceLabsBackpack.Name);
+            InventoryPage.AddItemToCart(ProductInfoFactory.CreateSauceLabsBackpack().Name);
 
-            Assert.IsTrue(InventoryPage.IsItemInCart(SauceLabsBackpack.Name), "The item was not added to the cart.");
+            Assert.IsTrue(InventoryPage.IsItemInCart(ProductInfoFactory.CreateSauceLabsBackpack().Name), "The item was not added to the cart.");
         }
 
         [Test]
         public void MultipleItemsAddedToCart_When_AddMultipleItems()
         {
-            var items = new[] { SauceLabsBackpack.Name, SauceLabsBoltTShirt.Name, TestAllTheThingsTShirt.Name };
+            var items = new[] { 
+                ProductInfoFactory.CreateSauceLabsBackpack().Name, 
+                ProductInfoFactory.CreateSauceLabsBoltTShirt().Name,
+                ProductInfoFactory.CreateTestAllTheThingsTShirtRed().Name
+            };
 
             foreach (var item in items)
             {
@@ -58,7 +61,7 @@ namespace SauceDemoTests
         [Test]
         public void CartCountUpdated_When_AddSingleItemToCart()
         {
-            InventoryPage.AddItemToCart(SauceLabsBikeLight.Name);
+            InventoryPage.AddItemToCart(ProductInfoFactory.CreateSauceLabsBikeLight().Name);
 
             Assert.That(CartPage.GetCartItemCount(), Is.EqualTo(1), "Cart item count is incorrect.");
         }
@@ -66,29 +69,39 @@ namespace SauceDemoTests
         [Test]
         public void CartCountUpdated_When_AddMultipleItemsToCart()
         {
-            var items = new[] { SauceLabsBackpack.Name, SauceLabsBoltTShirt.Name, TestAllTheThingsTShirt.Name };
+            var items = new[] 
+            { 
+                ProductInfoFactory.CreateSauceLabsBackpack().Name, 
+                ProductInfoFactory.CreateSauceLabsBoltTShirt().Name, 
+                ProductInfoFactory.CreateTestAllTheThingsTShirtRed().Name 
+            };
 
             foreach (var item in items)
             {
                 InventoryPage.AddItemToCart(item);
             }
 
-            Assert.That(CartPage.GetCartItemCount(), Is.EqualTo(3), "Cart item count is incorrect.");
+            Assert.That(CartPage.GetCartItemCount(), Is.EqualTo(items.Length), "Cart item count is incorrect.");
         }
 
         [Test]
         public void ItemRemovedFromCart_When_RemoveSingleItem()
         {
-            InventoryPage.AddItemToCart(SauceLabsBikeLight.Name);
+            InventoryPage.AddItemToCart(ProductInfoFactory.CreateSauceLabsBikeLight().Name);
 
-            InventoryPage.RemoveItemFromCart(SauceLabsBikeLight.Name);
-            Assert.IsFalse(InventoryPage.IsItemInCart(SauceLabsBikeLight.Name), "The item was not removed from the cart.");
+            InventoryPage.RemoveItemFromCart(ProductInfoFactory.CreateSauceLabsBikeLight().Name);
+            Assert.IsFalse(InventoryPage.IsItemInCart(ProductInfoFactory.CreateSauceLabsBikeLight().Name), "The item was not removed from the cart.");
         }
 
         [Test]
         public void MultipleItemsRemovedFromCart_When_RemoveMultipleItems()
         {
-            var items = new[] { SauceLabsBackpack.Name, SauceLabsBoltTShirt.Name, TestAllTheThingsTShirt.Name };
+            var items = new[] 
+            { 
+                ProductInfoFactory.CreateSauceLabsBackpack().Name, 
+                ProductInfoFactory.CreateSauceLabsBoltTShirt().Name, 
+                ProductInfoFactory.CreateTestAllTheThingsTShirtRed().Name 
+            };
 
             foreach (var item in items)
             {
@@ -102,7 +115,7 @@ namespace SauceDemoTests
 
             foreach (var item in items)
             {
-                Assert.That(InventoryPage.IsItemInCart(SauceLabsBikeLight.Name), Is.False, "The item was not removed from the cart.");
+                Assert.That(InventoryPage.IsItemInCart(ProductInfoFactory.CreateSauceLabsBikeLight().Name), Is.False, "The item was not removed from the cart.");
             }
         }
     }

@@ -8,7 +8,7 @@ namespace SauceDemoTests
         public void Setup()
         {
             LoginPage.Open();
-            var user = UserFactory.BuildUserCredentials("USER_VISUAL", "PASSWORD");
+            var user = UserInfoFactory.BuildUserCredentials("USER_VISUAL", "PASSWORD");
             LoginPage.Login(user);
             InventoryPage.AssertLoggedSuccessfully();
         }
@@ -16,7 +16,7 @@ namespace SauceDemoTests
         [Test]
         public void NoImagesAreBroken_When_LogWithVisualUser()
         {
-            Assert.AreEqual(0, InventoryPage.GetBrokenImagesCount(), "Some product images are broken.");
+            Assert.That(InventoryPage.GetBrokenImagesCount(), Is.EqualTo(0), "Some product images are broken.");
         }
 
         [Test]

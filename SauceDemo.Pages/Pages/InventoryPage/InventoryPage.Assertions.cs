@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using SauceDemo.Pages.Constants;
+using SauceDemo.Customizations.Factories;
 
 namespace SauceDemo.Customizations.Pages
 {
@@ -12,17 +12,17 @@ namespace SauceDemo.Customizations.Pages
         }
 
         public void AssertImagesAreWrong()
-        {
+        {            
             List<string> productImages = GetAllProductImageSources();
 
             var expectedImageSources = new List<string>
             {
-                SauceLabsBackpack.ImagePath,
-                SauceLabsBikeLight.ImagePath,
-                SauceLabsBoltTShirt.ImagePath,
-                SauceLabsFleeceJacket.ImagePath,
-                SauceLabsOnesie.ImagePath,
-                TestAllTheThingsTShirt.ImagePath
+                ProductInfoFactory.CreateSauceLabsBackpack().ImageUrl,
+                ProductInfoFactory.CreateSauceLabsBikeLight().ImageUrl,
+                ProductInfoFactory.CreateSauceLabsBoltTShirt().ImageUrl,
+                ProductInfoFactory.CreateSauceLabsFleeceJacket().ImageUrl,
+                ProductInfoFactory.CreateSauceLabsOnesie().ImageUrl,
+                ProductInfoFactory.CreateTestAllTheThingsTShirtRed().ImageUrl
             };
 
             Assert.AreNotEqual(expectedImageSources, productImages, "Product images do not match the expected images for Problem User.");
@@ -36,17 +36,7 @@ namespace SauceDemo.Customizations.Pages
             {
                 var imageElement = product.FindElement(By.TagName("img"));
                 string imageSource = imageElement.GetAttribute("src");
-
-                // Extract the relative path from the full URL
-                if (imageSource.Contains("/static/media/"))
-                {
-                    int relativePathIndex = imageSource.IndexOf("/static/media/");
-                    productImageSources.Add(imageSource.Substring(relativePathIndex));
-                }
-                else
-                {
-                    productImageSources.Add(imageSource); // Add full path if relative not found
-                }
+                productImageSources.Add(imageSource);
             }
 
             return productImageSources;

@@ -14,7 +14,7 @@ namespace SauceDemoTests
         [Test]
         public void StandardUserLogged_When_EnterCredentials()
         {
-            var user = UserFactory.BuildUserCredentials("USER_STANDARD", "PASSWORD");
+            var user = UserInfoFactory.BuildUserCredentials("USER_STANDARD", "PASSWORD");
 
             LoginPage.Login(user);
 
@@ -25,7 +25,7 @@ namespace SauceDemoTests
         public void LockedOutUserCannotLogin_When_EnterCredentials()
         {
             var lockedUserMessage = "Epic sadface: Sorry, this user has been locked out.";
-            var user = UserFactory.BuildUserCredentials("USER_LOCKED_OUT", "PASSWORD");
+            var user = UserInfoFactory.BuildUserCredentials("USER_LOCKED_OUT", "PASSWORD");
 
             LoginPage.Login(user);
 
@@ -35,7 +35,7 @@ namespace SauceDemoTests
         [Test]
         public void ProblemUserLogged_When_EnterCredentials()
         {
-            var user = UserFactory.BuildUserCredentials("USER_PROBLEM", "PASSWORD");
+            var user = UserInfoFactory.BuildUserCredentials("USER_PROBLEM", "PASSWORD");
 
             LoginPage.Login(user);
 
@@ -49,7 +49,7 @@ namespace SauceDemoTests
         [Test]
         public void PerformanceGlitchUserLogged_When_EnterCredentials()
         {
-            var user = UserFactory.BuildUserCredentials("USER_PERFORMANCE", "PASSWORD");
+            var user = UserInfoFactory.BuildUserCredentials("USER_PERFORMANCE", "PASSWORD");
 
             var loginStartTime = DateTime.Now;
             LoginPage.Login(user);
@@ -67,7 +67,7 @@ namespace SauceDemoTests
         [Test]
         public void ErrorUserLogged_When_EnterCredentials()
         {
-            var user = UserFactory.BuildUserCredentials("USER_ERROR", "PASSWORD");
+            var user = UserInfoFactory.BuildUserCredentials("USER_ERROR", "PASSWORD");
 
             LoginPage.Login(user);
 
@@ -77,7 +77,7 @@ namespace SauceDemoTests
         [Test]
         public void VisualUserLogged_When_EnterCredentials()
         {
-            var user = UserFactory.BuildUserCredentials("USER_VISUAL", "PASSWORD");
+            var user = UserInfoFactory.BuildUserCredentials("USER_VISUAL", "PASSWORD");
 
             LoginPage.Login(user);            
 

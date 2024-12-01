@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using Microsoft.Extensions.Configuration;
 using SauceDemo.Customizations.Pages;
+using SauceDemo.Customizations;
 
 public abstract class BasePage
 {
@@ -16,13 +17,8 @@ public abstract class BasePage
 
         SideBarSection = new SideBarSection(driver);
 
-        var configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .Build();
-        
-        BaseUrl = configuration["ApplicationSettings:BaseUrl"];
-}
+        BaseUrl = Configuration.BaseUrl;
+    }
 
     public virtual void Open(string relativePath = "")
     {

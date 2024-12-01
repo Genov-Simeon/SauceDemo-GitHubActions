@@ -14,5 +14,23 @@ namespace SauceDemo.Customizations.Pages
         private IWebElement AddToCartButton => Driver.FindElement(By.XPath("//button[contains(text(), 'Add to cart')]"));
 
         private IWebElement SortDropdown => Driver.FindElement(By.ClassName("product_sort_container"));
+
+        public void SelectSortOption(string optionText)
+        {
+            var selectElement = new SelectElement(SortDropdown);
+            selectElement.SelectByText(optionText);
+        }
+
+        public void SelectSortOptionByValue(string value)
+        {
+            var selectElement = new SelectElement(SortDropdown);
+            selectElement.SelectByValue(value);
+        }
+
+        public string GetSelectedSortOption()
+        {
+            var selectElement = new SelectElement(SortDropdown);
+            return selectElement.SelectedOption.Text;
+        }
     }
 }

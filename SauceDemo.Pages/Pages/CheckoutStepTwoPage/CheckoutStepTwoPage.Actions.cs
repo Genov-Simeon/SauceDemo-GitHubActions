@@ -12,5 +12,14 @@ namespace SauceDemo.Customizations.Pages
         {
             base.Open(relativePath);
         }
+
+        public decimal GetSubtotal()
+        {
+            string subtotalText = SummarySubtotalLabel.Text;
+
+            string numericPart = subtotalText.Replace("Item total: $", "").Trim();
+
+            return decimal.Parse(numericPart);
+        }
     }
 }

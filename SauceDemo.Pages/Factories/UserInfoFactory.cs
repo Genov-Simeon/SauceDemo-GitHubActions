@@ -2,7 +2,7 @@
 
 namespace SauceDemo.Customizations.Factories
 {
-    public static class UserFactory
+    public static class UserInfoFactory
     {
         public static UserInfo BuildUserCredentials(string username, string password)
         {

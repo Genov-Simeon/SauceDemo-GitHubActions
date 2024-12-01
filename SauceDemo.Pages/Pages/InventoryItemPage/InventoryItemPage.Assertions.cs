@@ -21,5 +21,12 @@ namespace SauceDemo.Customizations.Pages
                 return false;
             }
         }
+
+        public void ValidateProductDetails(string expectedName, string expectedDescription, string expectedPrice)
+        {
+            Assert.AreEqual(expectedName, ProductName.Text, "Product name does not match.");
+            Assert.AreEqual(expectedDescription, ProductDescription.Text, "Product description does not match.");
+            Assert.AreEqual(expectedPrice, ProductPrice.Text, "Product price does not match.");
+        }
     }
 }

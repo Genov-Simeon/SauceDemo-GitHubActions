@@ -12,5 +12,10 @@ namespace SauceDemo.Customizations.Pages
         {
             base.Open(relativePath);
         }
+
+        public string GetConfirmationMessage()
+        {
+            return CompleteHeader.Text;
+        }
     }
 }

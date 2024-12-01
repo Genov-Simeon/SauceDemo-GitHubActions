@@ -1,5 +1,4 @@
 ﻿using SauceDemo.Customizations.Factories;
-using SauceDemo.Pages.Constants;
 
 namespace SauceDemoTests
 {
@@ -9,7 +8,7 @@ namespace SauceDemoTests
         public void Setup()
         {
             LoginPage.Open();
-            var user = UserFactory.BuildUserCredentials("USER_ERROR", "PASSWORD");
+            var user = UserInfoFactory.BuildUserCredentials("USER_ERROR", "PASSWORD");
             LoginPage.Login(user);
             InventoryPage.AssertLoggedSuccessfully();
         }
@@ -31,20 +30,20 @@ namespace SauceDemoTests
         [Test]
         public void InventoryItemPageNavigated_When_LogWithErrorUser()
         {
-            InventoryPage.ClickOnProduct(SauceLabsBackpack.Name);
+            InventoryPage.ClickOnProduct(ProductInfoFactory.CreateSauceLabsBackpack().Name);
 
-            Assert.IsTrue(InventoryItemPage.IsOnProductPageByName(SauceLabsBackpack.Name), "Failed to navigate to the product detail page.");
+            Assert.IsTrue(InventoryItemPage.IsOnProductPageByName(ProductInfoFactory.CreateSauceLabsBackpack().Name), "Failed to navigate to the product detail page.");
         }
 
         [Test]
         public void CartItemsManipulatedIncorrectly_When_LogWithErrorUser()
         {
-            InventoryPage.AddItemToCart(SauceLabsBoltTShirt.Name);
-            InventoryPage.AddItemToCart(SauceLabsBikeLight.Name);
+            InventoryPage.AddItemToCart(ProductInfoFactory.CreateSauceLabsBoltTShirt().Name);
+            InventoryPage.AddItemToCart(ProductInfoFactory.CreateSauceLabsBikeLight().Name);
 
             Assert.That(InventoryPage.GetCartItemCount(), Is.EqualTo(1), "Cart item count updated not as expected");
 
-            InventoryPage.RemoveItemFromCart(SauceLabsBikeLight.Name);
+            InventoryPage.RemoveItemFromCart(ProductInfoFactory.CreateSauceLabsBikeLight().Name);
 
             Assert.That(InventoryPage.GetCartItemCount(), Is.EqualTo(1), "Cart item count updated not as expected");
         }
