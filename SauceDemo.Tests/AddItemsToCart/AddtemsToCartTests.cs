@@ -3,7 +3,7 @@ using SauceDemo.Customizations.Pages;
 
 namespace SauceDemoTests
 {
-    [Category("Checkout")]
+    [Category("Cart")]
     public class AddItemsToCartTests : BaseTest
     {
         [SetUp]
