@@ -2,7 +2,7 @@
 
 namespace SauceDemoTests
 {
-    [Category("User")]
+    [Category("VisualUser")]
     public class VisualUserTests : BaseTest
     {
         [SetUp]
